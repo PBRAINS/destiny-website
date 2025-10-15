@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Destiny Owobu — Portfolio</title>
+  <meta name="description" content="One-page profile of Destiny Owobu — Data Science Graduate Intern, Business Coach, and Teacher." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #111824;
+      --text: #e7eef8;
+      --muted: #a8b4c5;
+      --accent: #f54242;
+      --accent-2: #5aa9ff;
+      --ring: rgba(245,66,66,0.35);
+      --shadow: rgba(0,0,0,0.4);
+      --maxw: 1000px;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(90,169,255,0.10), transparent 60%),
+                  radial-gradient(900px 500px at 10% -20%, rgba(245,66,66,0.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      scroll-behavior: smooth;
+    }
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(92%, var(--maxw)); margin: 0 auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,15,20,0.8), rgba(11,15,20,0.3));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { font-weight: 700; letter-spacing: 0.3px; }
+    .brand .dot { color: var(--accent); }
+    nav a { margin-left: 18px; opacity: 0.9; }
+    nav a:focus, nav a:hover { opacity: 1; }
+
+    .hero { padding: 64px 0 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 10px; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px; color: var(--muted); font-size: 14px;
+      background: rgba(255,255,255,0.02);
+    }
+    h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.1; margin: 10px 0 12px; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 60ch; }
+    .cta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: 12px; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(245,66,66,0.12), rgba(245,66,66,0.08));
+      box-shadow: 0 10px 30px var(--ring);
+      color: var(--text);
+    }
+    .btn.secondary { background: rgba(255,255,255,0.02); box-shadow: none; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .avatar {
+      aspect-ratio: 1/1; width: 230px; border-radius: 20px;
+      background: linear-gradient(145deg, rgba(90,169,255,0.15), rgba(245,66,66,0.15));
+      display: grid; place-items: center; font-size: 64px; font-weight: 700;
+      border: 1px dashed rgba(255,255,255,0.2);
+      margin: 0 auto;
+    }
+    .avatar small { font-size: 12px; color: var(--muted) }
+
+    section { padding: 28px 0; }
+    section h2 { font-size: 22px; margin: 0 0 14px; letter-spacing: 0.2px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 10px; }
+    .kpi { text-align: center; padding: 12px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06) }
+    .kpi b { font-size: 22px; display: block; }
+
+    ul.clean { list-style: none; padding: 0; margin: 0; }
+    ul.clean li { padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); margin-bottom: 8px; }
+    .tagset { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 13px; padding: 6px 10px; border-radius: 999px;
+      background: rgba(255,255,255,0.06); color: var(--text);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer { padding: 26px 0 60px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.06); margin-top: 30px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social { display: flex; gap: 12px; }
+    .social a {
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .grid.two { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .avatar { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Destiny<span class="dot">•</span>Owobu</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="badge">📍 Benin City, Nigeria • Africa/Lagos</span>
+        <h1>Hello, I'm <span style="color:var(--accent)">Destiny Owobu</span> — Data Scientist, Business Coach & Teacher</h1>
+        <p class="lead">
+          I’m a Data Science Graduate Intern at Sand Technologies and the founder of PBRAINS Tutorial, Business Crusader Academy,
+          and BIT Academy. I care about using data and practical business education to help SMEs grow.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn secondary" href="#projects">See selected work</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b>2x</b> Bachelor's Degrees</div>
+          <div class="kpi"><b>EMBA</b> Quantic SBT</div>
+          <div class="kpi"><b>FMVA</b> &amp; Data Science</div>
+          <div class="kpi"><b>3</b> Companies Founded</div>
+        </div>
+      </div>
+      <div class="card" aria-label="Profile Photo">
+        <div class="avatar">DO<br><small>add a photo later</small></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="grid two">
+        <div class="card">
+          <p>
+            I teach Economics, Mathematics, and Statistics, and I’m an avid reader of business, science & technology,
+            and religious journals. My current goal is to become a technically proficient data scientist who can
+            confidently use modern tools to solve enterprise problems—while continuing to grow a business school
+            for SMEs that delivers practical results.
+          </p>
+          <ul class="clean">
+            <li>🎓 <b>Education:</b> B.Sc. Accounting (UNILAG); B.Sc. Economics &amp; Statistics (UNILAG); EMBA (Quantic SBT)</li>
+            <li>🏅 <b>Certifications:</b> FMVA (CFI), Data Science (Explore AI / Sand Technologies), AI Career Essentials</li>
+            <li>🧭 <b>Interests:</b> Data for development, SME growth, teaching, football, travel across Nigeria</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">What I'm focusing on</h3>
+          <ul class="clean">
+            <li>Building robust data science skills: Git, SQL, cloud, analytics engineering, orchestration</li>
+            <li>Designing training for SMEs through Business Crusader Academy &amp; BIT Academy</li>
+            <li>Mentoring entrepreneurs via the Tony Elumelu Foundation</li>
+          </ul>
+          <div class="tagset" aria-label="Focus tags">
+            <span class="tag">Data Science</span>
+            <span class="tag">Business Strategy</span>
+            <span class="tag">SME Education</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Public Speaking</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Selected Experience</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 style="margin-top:0">Sand Technologies — Data Science Graduate Intern</h3>
+          <p>Predictive modeling, exploratory data analysis, GIS-based analytics for telecom, and documentation of learnings. Collaborating on enterprise AI use cases.</p>
+          <ul class="clean">
+            <li>Improved understanding of fiber marketing analytics and opportunity scoring</li>
+            <li>Hands-on with Prefect, data pipelines, and model evaluation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">PBRAINS Tutorial — Founder & Lead Instructor</h3>
+          <p>Teach Economics, Mathematics &amp; Statistics; manage curriculum for SSCE, JAMB, POST-UTME, and more.</p>
+          <ul class="clean">
+            <li>Built programs that consistently prepare students for national exams</li>
+            <li>Implemented simple data tracking for enrollments and outcomes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Business Crusader Academy &amp; BIT Academy — Founder</h3>
+          <p>Provide practical business education and digital skills to SMEs, focusing on growth and operational excellence.</p>
+          <ul class="clean">
+            <li>Designed curricula on startup execution and digital tools</li>
+            <li>Coached entrepreneurs on finance, strategy, and analytics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3 style="margin-top:0">Data &amp; Analytics</h3>
+          <div class="tagset">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">EDA</span>
+            <span class="tag">Visualization</span>
+            <span class="tag">GIS (raster/vector)</span>
+            <span class="tag">Model Evaluation</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Business &amp; Teaching</h3>
+          <div class="tagset">
+            <span class="tag">Financial Modeling (FMVA)</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Curriculum Design</span>
+            <span class="tag">Mentoring &amp; Coaching</span>
+            <span class="tag">Public Speaking</span>
+            <span class="tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects & Highlights</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3 style="margin-top:0">Telecom Analytics — Opportunity Scoring</h3>
+          <p>Analyzed building density, connectivity, and wealth indices to prioritize fiber rollout and marketing actions.</p>
+          <ul class="clean">
+            <li>Developed practical metrics for non-technical stakeholders</li>
+            <li>Produced clear visuals and business-friendly narratives</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Teaching & Curriculum</h3>
+          <p>Designed learner-centered content for Economics, Mathematics, and Statistics with real-world applications for SMEs.</p>
+          <ul class="clean">
+            <li>Integrated data literacy into small business training</li>
+            <li>Improved student outcomes with structured practice</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid two">
+        <div class="card">
+          <p><b>Let’s collaborate.</b> Whether it’s data science, SME growth, or education, I’m open to meaningful work and partnerships.</p>
+          <p>📧 <a href="mailto:apogeeden@gmail.com">apogeeden@gmail.com</a></p>
+          <div class="social">
+            <a href="#" aria-label="LinkedIn profile">🔗 LinkedIn</a>
+            <a href="#" aria-label="GitHub profile">💻 GitHub</a>
+            <a href="#" aria-label="X / Twitter profile">🗣️ X</a>
+          </div>
+        </div>
+        <div class="card">
+          <form onsubmit="event.preventDefault(); alert('Thanks, Destiny will get back to you soon!');">
+            <label for="name">Name</label><br />
+            <input id="name" name="name" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);color:var(--text);margin:6px 0 10px;" />
+            <label for="email">Email</label><br />
+            <input id="email" name="email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);color:var(--text);margin:6px 0 10px;" />
+            <label for="message">Message</label><br />
+            <textarea id="message" name="message" rows="5" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);color:var(--text);margin:6px 0 10px;"></textarea>
+            <button class="btn" type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Destiny Owobu — Built with HTML &amp; CSS</div>
+      <div class="social">
+        <a href="#about">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
